@@ -21,11 +21,11 @@ function obtenerDivisoresPropios(num) {
   return divisores.slice(0, divisores.length - 2);
 }
 
-function sumaDivisoresPropios(divisores) {
+function sumaDivisoresPropios(num) {
   let suma = 0;
 
-  for (div of divisores.split(",")) {
-    suma += Number(div);
+  for (let i = 0; i < num; i++) {
+    if (!(num % i)) suma += i;
   }
 
   return suma;
@@ -54,7 +54,7 @@ function analizador(num) {
   let par = esPar(num);
   let prim = esPrimo(num);
   let divisors = obtenerDivisoresPropios(num);
-  let sumaDivisors = sumaDivisoresPropios(divisors);
+  let sumaDivisors = sumaDivisoresPropios(num);
   let clasificacio = clasificarNumero(num, sumaDivisors);
 
   console.log(`Es ${par ? "par" : "senar"}`);
