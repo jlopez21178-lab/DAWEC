@@ -43,7 +43,7 @@ class CompteBancari {
   }
 
   toJSON() {
-    return { titular: this.titular, saldo: this.saldo };
+    return JSON.stringify({ titular: this.titular, saldo: this.saldo });
   }
 
   static desdeObjecte(dades) {
@@ -67,8 +67,9 @@ const saldoTotal = comptes.reduce(
 console.log(saldoTotal);
 
 // f. Serialitzeu els comptes i reconstruïu-los amb un mètode estàtic desDeObjecte.
-const json = JSON.stringify(comptes.map((compte) => compte.toJSON()));
-let novesDades = JSON.parse(json);
-
+const json = comptes.map((compte) => compte.toJSON());
+console.log(json);
+let novesDades = json.map((dada) => JSON.parse(dada));
+console.log(novesDades);
 novesDades = novesDades.map((dada) => CompteBancari.desdeObjecte(dada));
 console.log(novesDades);
